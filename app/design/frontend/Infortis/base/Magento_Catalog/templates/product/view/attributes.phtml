@@ -1,0 +1,52 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/**
+ * Product additional attributes template
+ *
+ * @var $block \Magento\Catalog\Block\Product\View\Attributes
+ */
+?>
+<?php
+    $_helper = $this->helper('Magento\Catalog\Helper\Output');
+    $_product = $block->getProduct();
+    /* $categoryIds = $_product->getCategoryIds();
+    //print_r($categoryIds);
+    //echo sizeof($categoryIds);
+    $categories = $block->getCategoryCollection()
+                    ->addAttributeToFilter('entity_id', $categoryIds[0]);
+    
+                    print_r($categories);
+   //echo $block->getUrl('', ['_current' => true, '_use_rewrite' => true]);
+   $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+    if($category = $objectManager->get('Magento\Framework\Registry')->registry('current_category')){
+        echo $cat_url =  $category->getURL();
+    }
+    //santhosh added this for more information //
+   $parsedUrl = parse_url($url);
+    if ($parsedUrl['path'] == null) {
+       $url .= '/';
+    }
+    $separator = ($parsedUrl['query'] == NULL) ? '?' : '&';
+    $url .= $separator . $query;*/
+?>
+<?php if ($_additional = $block->getAdditionalData()): ?>
+    <div class="additional-attributes-wrapper table-wrapper">
+        <table class="data table additional-attributes" id="product-attribute-specs-table">
+            <caption class="table-caption"><?= /* @escapeNotVerified */ __('More Information') ?></caption>
+            <tbody>
+            <?php foreach ($_additional as $_data): ?>
+                <tr>
+                    <th class="col label" scope="row"><?= $block->escapeHtml(__($_data['label'])) ?></th>
+                    <td class="col data" data-th="<?= $block->escapeHtml(__($_data['label'])) ?>"><?= /* @escapeNotVerified */ $_helper->productAttribute($_product, $_data['value'], $_data['code']) ?></td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+<?php endif;?>

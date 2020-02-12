@@ -1,0 +1,593 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE OrderList SYSTEM "http://store.yahoo.com/doc/dtd/OrderList2.dtd">
+<OrderList StoreAccountName="">
+      		 <Order currency="USD" id="SM-SM-SM000000244">
+                <Time>2020-02-08 15:30:56</Time>
+                <NumericTime></NumericTime>
+                <Referer></Referer>
+                <Entry-Point>&lt;a href=&gt;&lt;/a&gt;</Entry-Point>
+                <AddressInfo type="ship">
+                    <Name>
+                        <First>Christine</First>
+                        <Last> Geffrard</Last>
+                        <Full>Christine Geffrard</Full>
+                    </Name>
+                    <Company/>
+                    <Address1>905 Pine Circle</Address1>
+                    <Address2/>
+                    <City>Greenacres</City>
+                    <State>FL</State>
+                    <Country>US</Country>
+                    <Zip>33463</Zip>
+                    <Phone>2022706557</Phone>
+                    <Email>jdoriane87@yahoo.fr</Email>
+                    <Custom name="Promo-Code"></Custom>
+                </AddressInfo>
+                <AddressInfo type="bill">
+                    <Name>
+                        <First>Christine </First>
+                        <Last>Geffrard</Last>
+                        <Full>Christine  Geffrard</Full>
+                    </Name>
+                    <Company/>
+                    <Address1>905 Pine Circle</Address1>
+                    <Address2/>
+                    <City>Greenacres</City>
+                    <State>FL</State>
+                    <Country>US</Country>
+                    <Zip>33463</Zip>
+                    <Phone>2022706557</Phone>
+                    <Email>jdoriane87@yahoo.fr</Email>
+                </AddressInfo> 
+                <IPAddress></IPAddress>
+                <Shipping>Ground - Fixed</Shipping>
+                <CreditCard expiration="xx/xxxx" type=""></CreditCard>
+                <ShipmentStatus>
+                    <Split>No</Split>
+                    <ShipState/>
+                    <Shipper/>
+                    <TrackingNumber/>
+                </ShipmentStatus>
+                    <Item num="1">
+                            <Id>791</Id>
+                            <Code>I0025051</Code>
+                            <Quantity>1</Quantity>
+                            <Unit-Price>8.9700</Unit-Price>
+                            <Description></Description>
+                            <Url></Url>
+                            <Taxable>YES</Taxable>
+                        </Item>
+                    <Item num="2">
+                            <Id>792</Id>
+                            <Code>I0094846</Code>
+                            <Quantity>1</Quantity>
+                            <Unit-Price>16.5600</Unit-Price>
+                            <Description></Description>
+                            <Url></Url>
+                            <Taxable>YES</Taxable>
+                        </Item>
+                 <Total>
+                    <Line type="Subtotal" name="Subtotal">25.5300</Line>
+                    <Line type="Shipping" name="Shipping">6.0000</Line>
+                    <Line type="Tax" name="Tax">0.0000</Line>
+                    <Line type="Total" name="Total">27.9600</Line>
+                </Total>
+                <Space-Id/>
+                <CardEvents>
+                    <CardAuth auth-response="" cvv-response="" amount="27.9600" avs-response="" approval-number=""/>
+                    <CardEvent amount="27.9600" type="Charge"/>
+                </CardEvents>
+      		</Order>
+      		 <Order currency="USD" id="SM-SM-SM000000297">
+                <Time>2020-02-11 12:59:04</Time>
+                <NumericTime></NumericTime>
+                <Referer></Referer>
+                <Entry-Point>&lt;a href=&gt;&lt;/a&gt;</Entry-Point>
+                <AddressInfo type="ship">
+                    <Name>
+                        <First>ISABELLE</First>
+                        <Last> WILSON</Last>
+                        <Full>ISABELLE WILSON</Full>
+                    </Name>
+                    <Company/>
+                    <Address1>7691 E Big Meadow Dr</Address1>
+                    <Address2/>
+                    <City>Tucson</City>
+                    <State>AZ</State>
+                    <Country>US</Country>
+                    <Zip>85756</Zip>
+                    <Phone>15202200214</Phone>
+                    <Email>audran14@hotmail.com</Email>
+                    <Custom name="Promo-Code"></Custom>
+                </AddressInfo>
+                <AddressInfo type="bill">
+                    <Name>
+                        <First>ISABELLE</First>
+                        <Last>WILSON</Last>
+                        <Full>ISABELLE WILSON</Full>
+                    </Name>
+                    <Company/>
+                    <Address1>7691 E Big Meadow Dr</Address1>
+                    <Address2/>
+                    <City>Tucson</City>
+                    <State>AZ</State>
+                    <Country>US</Country>
+                    <Zip>85756</Zip>
+                    <Phone>15202200214</Phone>
+                    <Email>audran14@hotmail.com</Email>
+                </AddressInfo> 
+                <IPAddress></IPAddress>
+                <Shipping>Ground - Fixed</Shipping>
+                <CreditCard expiration="xx/xxxx" type=""></CreditCard>
+                <ShipmentStatus>
+                    <Split>No</Split>
+                    <ShipState/>
+                    <Shipper/>
+                    <TrackingNumber/>
+                </ShipmentStatus>
+                    <Item num="1">
+                            <Id>915</Id>
+                            <Code>I0084791</Code>
+                            <Quantity>1</Quantity>
+                            <Unit-Price>6.9000</Unit-Price>
+                            <Description></Description>
+                            <Url></Url>
+                            <Taxable>YES</Taxable>
+                        </Item>
+                    <Item num="2">
+                            <Id>916</Id>
+                            <Code>I0038787</Code>
+                            <Quantity>1</Quantity>
+                            <Unit-Price>2.9100</Unit-Price>
+                            <Description></Description>
+                            <Url></Url>
+                            <Taxable>YES</Taxable>
+                        </Item>
+                    <Item num="3">
+                            <Id>917</Id>
+                            <Code>I0079723</Code>
+                            <Quantity>1</Quantity>
+                            <Unit-Price>57.9600</Unit-Price>
+                            <Description></Description>
+                            <Url></Url>
+                            <Taxable>YES</Taxable>
+                        </Item>
+                 <Total>
+                    <Line type="Subtotal" name="Subtotal">67.7700</Line>
+                    <Line type="Shipping" name="Shipping">6.0000</Line>
+                    <Line type="Tax" name="Tax">0.0000</Line>
+                    <Line type="Total" name="Total">73.7700</Line>
+                </Total>
+                <Space-Id/>
+                <CardEvents>
+                    <CardAuth auth-response="" cvv-response="" amount="73.7700" avs-response="" approval-number=""/>
+                    <CardEvent amount="73.7700" type="Charge"/>
+                </CardEvents>
+      		</Order>
+      		 <Order currency="USD" id="SM-SM-SM000000298">
+                <Time>2020-02-11 14:30:30</Time>
+                <NumericTime></NumericTime>
+                <Referer></Referer>
+                <Entry-Point>&lt;a href=&gt;&lt;/a&gt;</Entry-Point>
+                <AddressInfo type="ship">
+                    <Name>
+                        <First>RAFAEL</First>
+                        <Last>  FELIX SANTOS</Last>
+                        <Full>RAFAEL  FELIX SANTOS</Full>
+                    </Name>
+                    <Company/>
+                    <Address1>CPS18135 8550 NW 17TH ST. SUITE 110A DORAL</Address1>
+                    <Address2/>
+                    <City>MIAMI</City>
+                    <State>FL</State>
+                    <Country>US</Country>
+                    <Zip>33126-1112</Zip>
+                    <Phone>+18298559360</Phone>
+                    <Email>felix_rafael2005@hotmail.com</Email>
+                    <Custom name="Promo-Code"></Custom>
+                </AddressInfo>
+                <AddressInfo type="bill">
+                    <Name>
+                        <First>RAFAEL</First>
+                        <Last> FELIX SANTOS</Last>
+                        <Full>RAFAEL  FELIX SANTOS</Full>
+                    </Name>
+                    <Company/>
+                    <Address1>CPS18135 8550 NW 17TH ST. SUITE 110A DORAL</Address1>
+                    <Address2/>
+                    <City>MIAMI</City>
+                    <State>FL</State>
+                    <Country>US</Country>
+                    <Zip>33126-1112</Zip>
+                    <Phone>+18298559360</Phone>
+                    <Email>felix_rafael2005@hotmail.com</Email>
+                </AddressInfo> 
+                <IPAddress></IPAddress>
+                <Shipping>Ground - Fixed</Shipping>
+                <CreditCard expiration="xx/xxxx" type=""></CreditCard>
+                <ShipmentStatus>
+                    <Split>No</Split>
+                    <ShipState/>
+                    <Shipper/>
+                    <TrackingNumber/>
+                </ShipmentStatus>
+                    <Item num="1">
+                            <Id>918</Id>
+                            <Code>I0033572</Code>
+                            <Quantity>1</Quantity>
+                            <Unit-Price>92.1200</Unit-Price>
+                            <Description></Description>
+                            <Url></Url>
+                            <Taxable>YES</Taxable>
+                        </Item>
+                 <Total>
+                    <Line type="Subtotal" name="Subtotal">92.1200</Line>
+                    <Line type="Shipping" name="Shipping">0.0000</Line>
+                    <Line type="Tax" name="Tax">0.0000</Line>
+                    <Line type="Total" name="Total">92.1200</Line>
+                </Total>
+                <Space-Id/>
+                <CardEvents>
+                    <CardAuth auth-response="" cvv-response="" amount="92.1200" avs-response="" approval-number=""/>
+                    <CardEvent amount="92.1200" type="Charge"/>
+                </CardEvents>
+      		</Order>
+      		 <Order currency="USD" id="SM-SM-SM000000303">
+                <Time>2020-02-11 21:29:31</Time>
+                <NumericTime></NumericTime>
+                <Referer></Referer>
+                <Entry-Point>&lt;a href=&gt;&lt;/a&gt;</Entry-Point>
+                <AddressInfo type="ship">
+                    <Name>
+                        <First>claire jones</First>
+                        <Last> </Last>
+                        <Full>claire jones </Full>
+                    </Name>
+                    <Company/>
+                    <Address1>6180 Meadow Lane</Address1>
+                    <Address2/>
+                    <City>Salisbury</City>
+                    <State>NC</State>
+                    <Country>US</Country>
+                    <Zip>28147</Zip>
+                    <Phone>704-798-0484</Phone>
+                    <Email>claire.temesia@yahoo.com</Email>
+                    <Custom name="Promo-Code"></Custom>
+                </AddressInfo>
+                <AddressInfo type="bill">
+                    <Name>
+                        <First>claire jones</First>
+                        <Last></Last>
+                        <Full>claire jones </Full>
+                    </Name>
+                    <Company/>
+                    <Address1>6180 Meadow Lane</Address1>
+                    <Address2/>
+                    <City>Salisbury</City>
+                    <State>NC</State>
+                    <Country>US</Country>
+                    <Zip>28147</Zip>
+                    <Phone>704-798-0484</Phone>
+                    <Email>claire.temesia@yahoo.com</Email>
+                </AddressInfo> 
+                <IPAddress></IPAddress>
+                <Shipping>Ground - Fixed</Shipping>
+                <CreditCard expiration="xx/xxxx" type=""></CreditCard>
+                <ShipmentStatus>
+                    <Split>No</Split>
+                    <ShipState/>
+                    <Shipper/>
+                    <TrackingNumber/>
+                </ShipmentStatus>
+                    <Item num="1">
+                            <Id>922</Id>
+                            <Code>I0031353</Code>
+                            <Quantity>1</Quantity>
+                            <Unit-Price>24.8400</Unit-Price>
+                            <Description></Description>
+                            <Url></Url>
+                            <Taxable>YES</Taxable>
+                        </Item>
+                 <Total>
+                    <Line type="Subtotal" name="Subtotal">24.8400</Line>
+                    <Line type="Shipping" name="Shipping">6.0000</Line>
+                    <Line type="Tax" name="Tax">0.0000</Line>
+                    <Line type="Total" name="Total">30.8400</Line>
+                </Total>
+                <Space-Id/>
+                <CardEvents>
+                    <CardAuth auth-response="" cvv-response="" amount="30.8400" avs-response="" approval-number=""/>
+                    <CardEvent amount="30.8400" type="Charge"/>
+                </CardEvents>
+      		</Order>
+      		 <Order currency="USD" id="SM-SM-SM000000304">
+                <Time>2020-02-11 21:53:56</Time>
+                <NumericTime></NumericTime>
+                <Referer></Referer>
+                <Entry-Point>&lt;a href=&gt;&lt;/a&gt;</Entry-Point>
+                <AddressInfo type="ship">
+                    <Name>
+                        <First>Daniel</First>
+                        <Last> Schnell</Last>
+                        <Full>Daniel Schnell</Full>
+                    </Name>
+                    <Company/>
+                    <Address1>11113 E. 98TH ST. N.</Address1>
+                    <Address2/>
+                    <City>Owasso</City>
+                    <State>OK</State>
+                    <Country>US</Country>
+                    <Zip>74055</Zip>
+                    <Phone>9182720687</Phone>
+                    <Email>dan@tulsacoxmail.com</Email>
+                    <Custom name="Promo-Code"></Custom>
+                </AddressInfo>
+                <AddressInfo type="bill">
+                    <Name>
+                        <First>Daniel</First>
+                        <Last>Schnell</Last>
+                        <Full>Daniel Schnell</Full>
+                    </Name>
+                    <Company/>
+                    <Address1>11113 E. 98TH ST. N.</Address1>
+                    <Address2/>
+                    <City>Owasso</City>
+                    <State>OK</State>
+                    <Country>US</Country>
+                    <Zip>74055</Zip>
+                    <Phone>9182720687</Phone>
+                    <Email>dan@tulsacoxmail.com</Email>
+                </AddressInfo> 
+                <IPAddress></IPAddress>
+                <Shipping>Ground - Fixed</Shipping>
+                <CreditCard expiration="xx/xxxx" type=""></CreditCard>
+                <ShipmentStatus>
+                    <Split>No</Split>
+                    <ShipState/>
+                    <Shipper/>
+                    <TrackingNumber/>
+                </ShipmentStatus>
+                    <Item num="1">
+                            <Id>923</Id>
+                            <Code>I0036065</Code>
+                            <Quantity>1</Quantity>
+                            <Unit-Price>57.9600</Unit-Price>
+                            <Description></Description>
+                            <Url></Url>
+                            <Taxable>YES</Taxable>
+                        </Item>
+                 <Total>
+                    <Line type="Subtotal" name="Subtotal">57.9600</Line>
+                    <Line type="Shipping" name="Shipping">0.0000</Line>
+                    <Line type="Tax" name="Tax">0.0000</Line>
+                    <Line type="Total" name="Total">57.9600</Line>
+                </Total>
+                <Space-Id/>
+                <CardEvents>
+                    <CardAuth auth-response="" cvv-response="" amount="57.9600" avs-response="" approval-number=""/>
+                    <CardEvent amount="57.9600" type="Charge"/>
+                </CardEvents>
+      		</Order>
+      		 <Order currency="USD" id="SM-SM-SM000000306">
+                <Time>2020-02-11 22:43:36</Time>
+                <NumericTime></NumericTime>
+                <Referer></Referer>
+                <Entry-Point>&lt;a href=&gt;&lt;/a&gt;</Entry-Point>
+                <AddressInfo type="ship">
+                    <Name>
+                        <First>EDWARDO</First>
+                        <Last> CARDENAS</Last>
+                        <Full>EDWARDO CARDENAS</Full>
+                    </Name>
+                    <Company/>
+                    <Address1>6407 Weisinger Dr</Address1>
+                    <Address2/>
+                    <City>Magnolia</City>
+                    <State>TX</State>
+                    <Country>US</Country>
+                    <Zip>77354</Zip>
+                    <Phone>832-233-5549</Phone>
+                    <Email>cardse3@gmail.com</Email>
+                    <Custom name="Promo-Code"></Custom>
+                </AddressInfo>
+                <AddressInfo type="bill">
+                    <Name>
+                        <First>EDWARDO</First>
+                        <Last>CARDENAS</Last>
+                        <Full>EDWARDO CARDENAS</Full>
+                    </Name>
+                    <Company/>
+                    <Address1>6407 Weisinger Dr</Address1>
+                    <Address2/>
+                    <City>Magnolia</City>
+                    <State>TX</State>
+                    <Country>US</Country>
+                    <Zip>77354</Zip>
+                    <Phone>832-233-5549</Phone>
+                    <Email>cardse3@gmail.com</Email>
+                </AddressInfo> 
+                <IPAddress></IPAddress>
+                <Shipping>Ground - Fixed</Shipping>
+                <CreditCard expiration="xx/xxxx" type=""></CreditCard>
+                <ShipmentStatus>
+                    <Split>No</Split>
+                    <ShipState/>
+                    <Shipper/>
+                    <TrackingNumber/>
+                </ShipmentStatus>
+                    <Item num="1">
+                            <Id>924</Id>
+                            <Code>I0047150</Code>
+                            <Quantity>1</Quantity>
+                            <Unit-Price>12.4200</Unit-Price>
+                            <Description></Description>
+                            <Url></Url>
+                            <Taxable>YES</Taxable>
+                        </Item>
+                    <Item num="2">
+                            <Id>925</Id>
+                            <Code>I0030099</Code>
+                            <Quantity>1</Quantity>
+                            <Unit-Price>11.7300</Unit-Price>
+                            <Description></Description>
+                            <Url></Url>
+                            <Taxable>YES</Taxable>
+                        </Item>
+                 <Total>
+                    <Line type="Subtotal" name="Subtotal">24.1500</Line>
+                    <Line type="Shipping" name="Shipping">6.0000</Line>
+                    <Line type="Tax" name="Tax">0.0000</Line>
+                    <Line type="Total" name="Total">30.1500</Line>
+                </Total>
+                <Space-Id/>
+                <CardEvents>
+                    <CardAuth auth-response="" cvv-response="" amount="30.1500" avs-response="" approval-number=""/>
+                    <CardEvent amount="30.1500" type="Charge"/>
+                </CardEvents>
+      		</Order>
+      		 <Order currency="USD" id="SM-SM-SM000000307">
+                <Time>2020-02-11 23:18:03</Time>
+                <NumericTime></NumericTime>
+                <Referer></Referer>
+                <Entry-Point>&lt;a href=&gt;&lt;/a&gt;</Entry-Point>
+                <AddressInfo type="ship">
+                    <Name>
+                        <First>Greg Payton</First>
+                        <Last> </Last>
+                        <Full>Greg Payton </Full>
+                    </Name>
+                    <Company/>
+                    <Address1>417 Grant St.</Address1>
+                    <Address2/>
+                    <City>Chenoa</City>
+                    <State>IL</State>
+                    <Country>US</Country>
+                    <Zip>61726</Zip>
+                    <Phone>815-844-9218</Phone>
+                    <Email>notyap420@yahoo.com</Email>
+                    <Custom name="Promo-Code"></Custom>
+                </AddressInfo>
+                <AddressInfo type="bill">
+                    <Name>
+                        <First>Greg Payton</First>
+                        <Last></Last>
+                        <Full>Greg Payton </Full>
+                    </Name>
+                    <Company/>
+                    <Address1>417 Grant St.</Address1>
+                    <Address2/>
+                    <City>Chenoa</City>
+                    <State>IL</State>
+                    <Country>US</Country>
+                    <Zip>61726</Zip>
+                    <Phone>815-844-9218</Phone>
+                    <Email>notyap420@yahoo.com</Email>
+                </AddressInfo> 
+                <IPAddress></IPAddress>
+                <Shipping>Ground - Fixed</Shipping>
+                <CreditCard expiration="xx/xxxx" type=""></CreditCard>
+                <ShipmentStatus>
+                    <Split>No</Split>
+                    <ShipState/>
+                    <Shipper/>
+                    <TrackingNumber/>
+                </ShipmentStatus>
+                    <Item num="1">
+                            <Id>926</Id>
+                            <Code>I0031200</Code>
+                            <Quantity>1</Quantity>
+                            <Unit-Price>66.2400</Unit-Price>
+                            <Description></Description>
+                            <Url></Url>
+                            <Taxable>YES</Taxable>
+                        </Item>
+                    <Item num="2">
+                            <Id>927</Id>
+                            <Code>I0028800</Code>
+                            <Quantity>1</Quantity>
+                            <Unit-Price>31.7400</Unit-Price>
+                            <Description></Description>
+                            <Url></Url>
+                            <Taxable>YES</Taxable>
+                        </Item>
+                 <Total>
+                    <Line type="Subtotal" name="Subtotal">97.9800</Line>
+                    <Line type="Shipping" name="Shipping">6.0000</Line>
+                    <Line type="Tax" name="Tax">0.0000</Line>
+                    <Line type="Total" name="Total">103.9800</Line>
+                </Total>
+                <Space-Id/>
+                <CardEvents>
+                    <CardAuth auth-response="" cvv-response="" amount="103.9800" avs-response="" approval-number=""/>
+                    <CardEvent amount="103.9800" type="Charge"/>
+                </CardEvents>
+      		</Order>
+      		 <Order currency="USD" id="SM-SM-SM000000308">
+                <Time>2020-02-12 00:07:38</Time>
+                <NumericTime></NumericTime>
+                <Referer></Referer>
+                <Entry-Point>&lt;a href=&gt;&lt;/a&gt;</Entry-Point>
+                <AddressInfo type="ship">
+                    <Name>
+                        <First>danielle briot</First>
+                        <Last> </Last>
+                        <Full>danielle briot </Full>
+                    </Name>
+                    <Company/>
+                    <Address1>6524 knernschield rd</Address1>
+                    <Address2/>
+                    <City>russellville</City>
+                    <State>MO</State>
+                    <Country>US</Country>
+                    <Zip>65074</Zip>
+                    <Phone>573-694-8606</Phone>
+                    <Email>danielle.briot@gmail.com</Email>
+                    <Custom name="Promo-Code"></Custom>
+                </AddressInfo>
+                <AddressInfo type="bill">
+                    <Name>
+                        <First>danielle briot</First>
+                        <Last></Last>
+                        <Full>danielle briot </Full>
+                    </Name>
+                    <Company/>
+                    <Address1>6524 knernschield rd</Address1>
+                    <Address2/>
+                    <City>russellville</City>
+                    <State>MO</State>
+                    <Country>US</Country>
+                    <Zip>65074</Zip>
+                    <Phone>573-694-8606</Phone>
+                    <Email>danielle.briot@gmail.com</Email>
+                </AddressInfo> 
+                <IPAddress></IPAddress>
+                <Shipping>Ground - Fixed</Shipping>
+                <CreditCard expiration="xx/xxxx" type=""></CreditCard>
+                <ShipmentStatus>
+                    <Split>No</Split>
+                    <ShipState/>
+                    <Shipper/>
+                    <TrackingNumber/>
+                </ShipmentStatus>
+                    <Item num="1">
+                            <Id>928</Id>
+                            <Code>I0035223</Code>
+                            <Quantity>1</Quantity>
+                            <Unit-Price>38.6400</Unit-Price>
+                            <Description></Description>
+                            <Url></Url>
+                            <Taxable>YES</Taxable>
+                        </Item>
+                 <Total>
+                    <Line type="Subtotal" name="Subtotal">38.6400</Line>
+                    <Line type="Shipping" name="Shipping">6.0000</Line>
+                    <Line type="Tax" name="Tax">0.0000</Line>
+                    <Line type="Total" name="Total">44.6400</Line>
+                </Total>
+                <Space-Id/>
+                <CardEvents>
+                    <CardAuth auth-response="" cvv-response="" amount="44.6400" avs-response="" approval-number=""/>
+                    <CardEvent amount="44.6400" type="Charge"/>
+                </CardEvents>
+      		</Order>
+</OrderList>

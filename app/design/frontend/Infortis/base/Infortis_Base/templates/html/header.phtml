@@ -1,0 +1,570 @@
+<!-- santhosh - script for speedkit -->
+<script type="text/javascript">
+var speedKit = {
+  appName: 'restless-bolt-42',
+  whitelist: [
+/* START Default Whitelist + Third Party Content */
+    {
+      host: [
+        /trackpww\.com$/,
+        "fonts.googleapis.com",
+        "fonts.gstatic.com",
+        "www.gstatic.com"
+      ]
+    },
+    {
+      url: "www.google-analytics.com/analytics.js"
+    }
+/* END Default Whitelist */
+  ],
+  blacklist: [
+/* START Not Static Content */
+    {
+      contentType: ['document']
+    },
+/* END Not Static Content */
+/* START Default Blacklist */
+    {
+      url: /[?&]_=\d{13,}/
+    }
+/* END Default Blacklist */
+  ],
+};
+!function(e,n,t,r,i,o){"use strict";var a="baqend-speedkit",s=a+"-user-id",u=a+"-session-id",c=a+"-session-timestamp",d=a+"-group";function p(e,n,t,r){return Promise.resolve(e).then(function(e){return new Promise(function(i,o){var a=e.transaction(n,t),s=Promise.resolve(r(a.objectStore(n)));a.oncomplete=function(){return s.then(i)},a.onabort=a.onerror=function(){return o(a.error)}})})}function f(e,n,t){return p(e,n,"readwrite",t)}var l=function(){function e(){this.dbp=null,this.dbp=this.openDb()}return e.prototype.get=function(e){return(n=this.db(),t="baqend-speedkit-store",r=function(n){return n.get(e)},p(n,t,"readonly",r)).then(function(e){return e.result||null});var n,t,r},e.prototype.set=function(e,n){return f(this.db(),"baqend-speedkit-store",function(t){return t.put(n,e)&&void 0})},e.prototype.clear=function(){return Promise.all([(e=this.db(),n="baqend-speedkit-store",f(e,n,function(e){return e.clear()}).then(function(){}))]).then(function(){});var e,n},e.prototype.disconnect=function(){var e=this;return this.dbp?this.dbp.then(function(n){e.dbp=null,n.close()}):Promise.resolve()},e.prototype.db=function(){return this.dbp||(this.dbp=this.openDb()),this.dbp},e.prototype.openDb=function(){var e=this,n=indexedDB.open(a,1);return n.onupgradeneeded=function(e){var t=e.oldVersion,r=n.result;t<1&&r.createObjectStore("baqend-speedkit-store")},function(e){return new Promise(function(n,t){e.onsuccess=function(){return n(e.result)},e.onerror=function(){return t(e.error)}})}(n).then(function(n){return n.onclose=function(){e.dbp=null},n.onerror=function(){e.dbp=null},n.onversionchange=function(t){t.newVersion||(e.dbp=null,n.close())},n})},e}();!function(){function e(){this.map=new Map}e.prototype.get=function(e){return Promise.resolve(this.map.get(e)||null)},e.prototype.set=function(e,n){return this.map.set(e,n),Promise.resolve()},e.prototype.clear=function(){return this.map.clear(),Promise.resolve()}}();function v(n){"complete"!==e.readyState?window.addEventListener("load",n):n()}function h(n){var t=new RegExp(n+"=([^,;]*);"),r=e.cookie.match(t);if(r)return r[1];if("undefined"==typeof Storage)return null;try{return localStorage.getItem(n)}catch(i){return null}}function m(n,t){if(e.cookie=n+"="+t+"; path=/","undefined"!=typeof Storage)try{localStorage.setItem(n,t)}catch(r){}}function g(){if(null==r.split||r.split>=1)return"A";var e=h(d);if(e)return e;var n=Math.random()<r.split?"A":"B";return m(d,n),n}function b(e){return void 0===e&&(e=25),function(e){var n=[];n.length=e;var t=0;for(;t<e;)n[t]=0,t+=1;return n}(e).map(function(){return Math.floor(62*Math.random())}).map(function(e){return"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"[e]}).join("")}function w(){var e,n=(e=h(c))&&(Date.now()-parseInt(e,10))/1e3<=r.sessionLifetime?h(u):b();return m(u,n),m(c,Date.now().toString()),n}function y(){var e=h(s);if(e)return e;var n=b();return m(s,n),n}function P(e,t){if(n.sendBeacon)n.sendBeacon(e,t);else{var r=new XMLHttpRequest;r.open("POST",e,!0),r.send(t)}}function S(e){return fetch(r.appURL+"/config/VAPIDPublicKey").then(function(e){return e.arrayBuffer()}).then(function(e){return{applicationServerKey:e,userVisibleOnly:!0}}).then(function(n){return e.subscribe(n)}).then(function(e){var n={subscription:e,devicetype:"WebPush"};return fetch(r.appURL+"/db/Device/register",{method:"POST",credentials:"include",body:JSON.stringify(n),headers:{"Content-Type":"application/json"}})}).then(function(e){return 200===e.status},function(){return!1})}function k(n){var t,r,i;"complete"!==n.readyState&&(n.readyState="complete",t="speed-kit-completed",r=window,void 0===i&&(i={}),setTimeout(function(){var n;"function"==typeof CustomEvent?n=new CustomEvent(t,{detail:i}):(n=e.createEvent("CustomEvent")).initCustomEvent(t,!0,!0,i),r.dispatchEvent(n)}))}var I=g();r.disabled=r.disabled||"B"===I,r.sessionLifetime=r.sessionLifetime||1800;var C,E,L=function(){var e=n.userAgent,t=e.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i)||[],r=null;if(/trident/i.test(t[1]))return r=/\brv[ :]+(\d+)/g.exec(e)||[],["IE",parseInt(r[1],10)||0];if("Chrome"===t[1]){if(null!=(r=e.match(/\bEdge\/(\d+)/)))return["Edge",parseInt(r[1],10)];if(null!=(r=e.match(/\bOPR\/(\d+)/)))return["Opera",parseInt(r[1],10)]}var i=t[2]?[t[1],parseInt(t[2],10)]:[n.appName,parseInt(n.appVersion,10)];return null!=(r=e.match(/version\/(\d+)/i))&&i.splice(1,1,parseInt(r[1],10)),i}(),M=L[0],q=L[1],D={subscribe:function(){return"Notification"in window?Notification.requestPermission().then(function(e){return"denied"===e?"denied":"granted"!==e?"undecided":n[t].ready.then(function(e){var n=e.pushManager;return function(e){return e.getSubscription().then(function(e){return!!e})}(n).then(function(e){return!!e||S(n)})}).then(function(e){return e?"registered":"unregistered"})}):Promise.resolve("unsupported")},swSupported:!1,wasServed:!1,wasCacheHit:!1,lastNavigate:{browser:M,browserVersion:q,enabled:!1,served:!1,cacheHit:!1,cdnCacheHit:null,cdnBackendTime:null,cdnPoP:null,firstLoad:(C=null===h(s),E=n[t]&&n[t].controller,C&&!E)},readyState:"loading",userId:y(),sessionId:w(),navigateId:"/db/speedKit.Metric/"+b(32),track:function(e,n,t){var i=new FormData;i.append("navigate",window.SpeedKit.navigateId),i.append("action",""+e),i.append("label",""+n),i.append("value",""+t),i.append("userId",""+y()),i.append("sessionId",""+w()),i.append("group",""+g()),P(r.appURL+"/db/speedKit.CustomEvent",i)}};if(window.SpeedKit=D,r.appURL="https://"+(r.appDomain||"{}.app.baqend.com".replace("{}",r.appName))+"/v1",n[t]){D.swSupported=!0;var R=new l;if(i=r.sw||"/sw.js",!r.disabled&&function(e,n){return"Chrome"===e?n>=61:"Firefox"!==e||59!==n}(M,q)){var T=n[t].controller;if(T)(function(e,n){return new Promise(function(t,r){var i=new MessageChannel,o=i.port1,a=i.port2;o.onmessage=function(e){return t(e.data)},o.onmessageerror=function(e){return r(e.data)},e.postMessage(n,[a])})})(T,{type:"get-navigate-info",clientURL:location.href}).then(function(e){if(k(D),e){if("wasCacheHit"in e)return D.wasServed=!0,void(D.wasCacheHit=e.wasCacheHit);D.wasServed=e.served,D.wasCacheHit=e.cacheHit,D.lastNavigate=e,D.lastNavigate.firstLoad=!1}}),setTimeout(function(){return k(D)},1e3),T.postMessage({type:"send-cookies",data:e.cookie,event:"load"});else k(D);Promise.resolve().then(function(){var n=window.devicePixelRatio,t=window.screen.width;return Promise.all([R.set("/com.baqend.speedkit.config",r),R.set("/com.baqend.speedkit.screen",{dpr:n,width:t}),R.set("/com.baqend.speedkit.cookie",{origins:[[location.origin,e.cookie]]}),void 0]).then(function(){return R.disconnect()})}).then(function(){n[t].register(i,{scope:r.scope||"/"}).then(function(n){window.addEventListener("unload",function(){n.active&&n.active.postMessage({type:"send-cookies",data:e.cookie,event:"unload"})}),v(function(){window.setTimeout(function(){var e=window.performance.getEntriesByType("resource").map(function(e){return{url:e.name,initiatorType:e.initiatorType}});n.active&&n.active.postMessage({type:"prewarm-fetch",data:e})},1e3)}),n.navigationPreload&&function(e){if(e.active)return Promise.resolve(e.active);var n=e.waiting||e.installing;return new Promise(function(e){return n.onstatechange=function(){"activated"===n.state&&e(n)}})}(n).then(function(){r.navigationPreload?n.navigationPreload.enable():n.navigationPreload.disable()})})})}else n[t].getRegistration(i).then(function(e){return!!e&&e.unregister()}),k(D)}else k(D)}(document,navigator,"serviceWorker","undefined"!=typeof speedKit?speedKit:config);
+</script>
+<?php
+/**
+ * @var \Infortis\Base\Block\Html\Header $block
+ * TODO: replace all occurrences of $this with $block
+ */
+?>
+<?php
+    $theme = $block->getHelperTheme();
+    $helperHeader = $block->getHelperHeader();
+    $connectorMenu = $block->getHelperConnectorMenu();
+
+    //Get HTML of header blocks
+    //**************************************************************
+    $currencySwitcherHtml = $this->getChildHtml('currency');
+    $mobileCurrencySwitcherHtml = $this->getChildHtml('currency.mobile');
+    $languageSwitcherHtml = $this->getChildHtml('store_language');
+    $mobileLanguageSwitcherHtml = $this->getChildHtml('store_language.mobile');
+    $cartHtml = $this->getChildHtml('minicart');
+    $compareHtml = $this->getChildHtml('compareMini'); // Original block name is "catalog.compare.sidebar"
+    $compareLinkHtml = $this->getChildHtml('catalog.compare.link');
+    $logoHtml = $this->getChildHtml('site-logo');
+    $logoMobileHtml = $this->getChildHtml('site-logo-mobile');
+    $searchHtml = $this->getChildHtml('topSearch');
+    $accountLinksHtml = $this->getChildHtml('account-links');
+    $userMenuHtml = $this->getChildHtml('user-menu');
+    $menuHtml = $this->getChildHtml('store.menu');
+
+    //Layout settings and basic flags
+    //**************************************************************
+
+    //Sticky header
+    $sticky = $theme->getCfg('header/sticky');
+
+    //Mobile header
+    $mobileHeaderMode = true; // TODO: remove. This option is deprecated since Ultimo 2.4.0 // $theme->getCfg('header/mode');
+    $mobileMenuThreshold = 770; // Set default value, in case mobile menu threshold doesn't exist
+    if ($sticky)
+    {
+        $val = $connectorMenu->getMobileMenuThreshold();
+        if ($val !== NULL)
+        {
+            $mobileMenuThreshold = $val;
+        }
+    }
+
+    //This flag indicates that in mobile header the default language/currency switchers should be hidden
+    //and replaced with mobile versions of those switchers
+    $moveSwitchers = $theme->getCfg('header/mobile_move_switchers');
+
+    //Get grid classes for header sections
+    $grid = $helperHeader->getGridClasses();
+
+    //Get positions of header blocks
+    $position = $helperHeader->getPositions();
+
+    //Check if main menu is displayed inisde a section (full-width section) at the bottom of the header
+    $menuDisplayedInFullWidthContainer = $helperHeader->isMenuDisplayedInFullWidthContainer();
+
+    //Additional classes for primary header blocks holder
+    //TODO: improve: add this class only when menu inside primary header, not in top header.
+    $hpClasses = '';
+    if ($menuDisplayedInFullWidthContainer === false)
+    {
+        $hpClasses = ' hp-blocks-holder--stacked'; //Important: keep the space at the beginning
+    }
+
+    //Additional classes
+    //**************************************************************
+    //Header
+    $classes['root'] = '';
+    if ($moveSwitchers)
+        $classes['root'] .= ' move-switchers';
+    
+    //Menu
+    $classes['nav-container'] = '';
+    if ($sticky && $theme->getCfg('header/sticky_full_width'))
+        $classes['nav-container'] .= ' sticky-container--full-width';
+
+    if ($menuDisplayedInFullWidthContainer === false)
+        $classes['nav-container'] .= ' simple';
+
+    //Assign blocks to selected positions
+    //**************************************************************
+    $html = array();
+
+    //Logo (before search, to keep the search box below the logo if blocks stacked vertically)
+    $html[$position['logo']][] = '<div class="logo-wrapper logo-wrapper--regular">' . $logoHtml . '</div>';
+
+    //If mobile mode enabled, place block markers on configured positions
+    if ($mobileHeaderMode)
+    {
+        //Mini cart
+        if (!empty($cartHtml))
+        {
+            $html[$position['cart']][] = '<div id="mini-cart-marker-regular"></div>';
+        }
+
+        //Mini compare
+        if (!empty($compareHtml))
+        {
+            $html[$position['compare']][] = '<div id="mini-compare-marker-regular"></div>';
+        }
+
+        //Search
+        if (!empty($searchHtml))
+        {
+            $html[$position['search']][] = '<div id="search-marker-regular"></div>';
+        }
+
+        //Account links
+        if (!empty($accountLinksHtml))
+        {
+            $html[$position['account-links']][] = '<div id="account-links-marker-regular"></div>';
+        }
+    }
+    else //Mobile mode disabled (deprecated)
+    {
+        //Mini cart
+        if (!empty($cartHtml))
+        {
+            $html[$position['cart']][] = '<div id="mini-cart-marker-regular"></div>' . $cartHtml;
+        }
+
+        //Mini compare
+        if (!empty($compareHtml))
+        {
+            $html[$position['compare']][] = '<div id="mini-compare-marker-regular"></div>' . $compareHtml;
+        }
+
+        //Search
+        if (!empty($searchHtml))
+        {
+            $html[$position['search']][] = '<div id="search-marker-regular"></div>' . $searchHtml;
+        }
+
+        //Account links
+        if (!empty($accountLinksHtml))
+        {
+            $html[$position['account-links']][] = '<div id="account-links-marker-regular"></div>' . $accountLinksHtml;
+        }
+    }
+
+    //User menu
+    $html[$position['user-menu']][] = $userMenuHtml;
+
+    //Main menu
+    $menuContainerHtml = '
+    <div class="nav-container skip-content sticky-container' . ($classes['nav-container'] ? $classes['nav-container'] : '') . '">
+        <div class="nav container clearer">
+            <div class="inner-container">' . $menuHtml . '</div>
+        </div>
+    </div>';
+    if ($menuDisplayedInFullWidthContainer === false)
+    {
+        $html[$position['main-menu']][] = $menuContainerHtml;
+    }
+
+    //Currency switcher
+    if (!empty($currencySwitcherHtml))
+    {
+         $html[$position['currency']][] = '<div id="currency-switcher-wrapper-regular">' . $currencySwitcherHtml . '</div>';
+    }
+
+    //Language switcher
+    if (!empty($languageSwitcherHtml))
+    {
+        $html[$position['language']][] = '<div id="lang-switcher-wrapper-regular">' . $languageSwitcherHtml . '</div>';
+    }
+
+    //Skip links and blocks displayed via skip links
+    //**************************************************************
+    //Skip links count
+    $skipLinksCount = 0;
+
+    //Search
+    if (!empty($searchHtml))
+    {
+        $skipLinksCount++;
+    }
+
+    //Account links
+    if (!empty($accountLinksHtml))
+    {
+        $skipLinksCount++;
+    }
+
+    //Mini cart
+    if (!empty($cartHtml))
+    {
+        $skipLinksCount++;
+    }
+
+    //Mini compare
+    if (!empty($compareHtml))
+    {
+        $skipLinksCount++;
+    }
+
+    //Main menu
+    if (!empty($menuHtml)) 
+    {
+        $skipLinksCount++;
+    }
+?>
+<div id="header-container" class="header-container header-mobile page-header<?php if ($classes['root']) echo $classes['root']; ?>" <?php /* style="display:none;" */?> >
+<div id="top" class="header-container2">
+<div class="header-container3">
+
+    <?php if ($mobileHeaderMode): ?>
+    <!-- Part of the header displayed only in mobile mode -->
+    <div class="header-m-container">
+
+        <div class="header-m-top-container">
+            <div class="header-m-top header container clearer">
+                <div class="inner-container">
+
+                    <?php echo $this->getChildHtml('container_mobile_header_top'); ?>
+
+                    <?php if ($moveSwitchers == false): ?>
+                        <?php if ($mobileCurrencySwitcherHtml): ?>
+                            <div id="currency-switcher-wrapper-mobile" class="item item-right"><?php echo $mobileCurrencySwitcherHtml; ?></div>
+                        <?php endif; ?>
+                        <?php if ($mobileLanguageSwitcherHtml): ?>
+                            <div id="lang-switcher-wrapper-mobile" class="item item-right"><?php echo $mobileLanguageSwitcherHtml; ?></div>
+                        <?php endif; ?>
+                    <?php endif; ?>
+
+                </div> <!-- end: inner-container -->
+            </div> <!-- end: header-m-top -->
+        </div> <!-- end: header-m-top-container -->
+
+        <div class="header-m-primary-container">
+            <div class="header-m-primary header container">
+                <div class="inner-container">
+
+                    <?php if ($moveSwitchers && ($mobileCurrencySwitcherHtml || $mobileLanguageSwitcherHtml)): ?>
+                        <div id="header-collateral" class="header-collateral">
+                            <?php echo $mobileLanguageSwitcherHtml; ?>
+                            <?php echo $mobileCurrencySwitcherHtml; ?>
+                        </div>
+                    <?php endif; ?>
+
+                    <!-- Mobile logo -->
+                    <div class="logo-wrapper--mobile">
+                        <?php echo $logoMobileHtml; ?>
+                    </div>
+                    <div class="clearer after-mobile-logo"></div>
+
+                    <!-- Skip links -->
+                    <div id="skip-links" class="skip-links-wrapper skip-links--<?php echo $skipLinksCount; ?>">
+
+                        <?php if (!empty($menuHtml)): ?>
+                            <div data-skiptarget="#header-nav" class="skip-link skip-nav">
+                                <span class="icon ic ic-menu"></span>
+                                <span class="label"><?php echo __('Menu'); ?></span>
+                            </div>
+                        <?php endif; ?>
+
+                        <?php if (!empty($searchHtml)): ?>
+                            <div data-skiptarget="#header-search" class="skip-link skip-search">
+                                <span class="icon ic ic-search"></span>
+                                <span class="label"><?php echo __('Search'); ?></span>
+                            </div>
+                        <?php endif; ?>
+
+                        <?php if (!empty($accountLinksHtml)): ?>
+                            <div data-skiptarget="#header-account" class="skip-link skip-account">
+                                <span class="icon ic ic-user"></span>
+                                <span class="label"><?php echo __('My Account'); ?></span>
+                            </div>
+                        <?php endif; ?>
+
+                        <?php if (!empty($compareHtml)): ?>
+                            <div data-skiptarget="#header-compare" class="skip-link skip-compare">
+                                <span class="icon ic ic-compare"></span>
+                                <?php if (($compareCount = Mage::registry('miniCompareProductCount')) > 0): ?>
+                                    <span class="count"><?php echo $compareCount; ?></span>
+                                <?php endif; ?>
+                                <span class="label"><?php echo __('Compare'); ?></span>
+                            </div>
+                        <?php endif; ?>
+
+                        <?php //Skip content - containers for blocks displayed on mobile devices ?>
+
+                        <?php //Mini cart (and its skip link) on mobile devices - it has to be just after the other skip links and before other blocks ?>
+                        <?php if (!empty($cartHtml)): ?>
+                            <div id="mini-cart-marker-mobile"></div>
+                            <?php echo $cartHtml; ?>
+                        <?php endif; ?>
+
+                        <?php //Menu on mobile devices ?>
+                            <div id="header-nav" class="skip-content skip-content--style">
+                                <div id="nav-marker-mobile"></div>
+                            </div>
+
+                        <?php if (!empty($searchHtml)): ?>
+                            <div id="search-marker-mobile"></div>
+                            <?php echo $searchHtml; ?>
+                        <?php endif; ?>
+
+                        <?php if (!empty($accountLinksHtml)): ?>
+                            <div id="account-links-marker-mobile"></div>
+                            <?php echo $accountLinksHtml; ?>
+                        <?php endif; ?>
+
+                        <?php if (!empty($compareHtml)): ?>
+                            <div id="mini-compare-marker-mobile"></div>
+                            <?php echo $compareHtml; ?>
+                        <?php endif; ?>
+
+                            <div class="skip-links-clearer clearer"></div>
+
+                    </div> <!-- end: skip-links-wrapper -->
+
+                </div> <!-- end: inner-container -->
+            </div> <!-- end: header-m-primary -->
+        </div> <!-- end: header-m-primary-container -->
+
+    </div> <!-- end: header-m-container -->
+    <?php endif; //end: mode ?>
+
+    <!-- Part of the header displayed only in regular mode -->
+    <div class="header-top-container">
+        <div class="header-top header container clearer">
+            <div class="inner-container">
+
+                <?php echo $this->getChildHtml('skip_to_content'); ?>
+
+                <?php
+                    //Central column is displayed above left and right columns to avoid incorrect layout
+                    //because all columns contain inline elements.
+                    $containerHeaderTopCentral = $this->getChildHtml('container_header_top_central_1'); 
+                ?>
+                <?php if (isset($html['topCentral']) || $containerHeaderTopCentral): ?>
+                    <div class="central-column">
+
+                        <?php if (isset($html['topCentral'])): ?>
+                            <?php foreach ($html['topCentral'] as $element): ?>
+                                <div class="item item-interface"><?php echo $element; ?></div>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+
+                        <?php if ($containerHeaderTopCentral): ?>
+                            <div class="item">
+                                <?php echo $containerHeaderTopCentral; ?>
+                            </div>
+                        <?php endif; ?>
+
+                    </div> <!-- end: central column -->
+                <?php endif; ?>
+
+                <div class="left-column">
+
+                    <?php if (isset($html['topLeft'])): ?>
+                        <?php foreach ($html['topLeft'] as $element): ?>
+                            <div class="item item-left item-interface"><?php echo $element; ?></div>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+
+                    <?php if ($tmpHtml = $this->getChildHtml('container_header_top_left_1')): ?>
+                        <div class="item item-left"><?php echo $tmpHtml; ?></div>
+                    <?php endif; ?>
+
+                    <?php if ($tmpHtml = $this->getChildHtml('block_header_top_left')): ?>
+                        <div class="item item-left"><?php echo $tmpHtml; ?></div>
+                    <?php endif; ?>
+
+                    <?php if ($tmpHtml = $this->getWelcome()): ?>
+                        <div class="item item-left local-font hidden-xs hidden-sm">
+                            <div class="welcome"><?php echo $tmpHtml; ?></div>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php if ($compareLinkHtml): ?>
+                        <div class="item item-left">
+                            <?php echo $compareLinkHtml; ?>
+                        </div>
+                    <?php endif; ?>
+
+                </div> <!-- end: left column -->
+
+                <div class="right-column">
+
+                    <?php if (isset($html['topRight'])): ?>
+                        <?php foreach ($html['topRight'] as $element): ?>
+                            <div class="item item-right item-interface"><?php echo $element; ?></div>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+
+                    <?php if ($tmpHtml = $this->getChildHtml('container_header_top_right_1')): ?>
+                        <div class="item item-right"><?php echo $tmpHtml; ?></div>
+                    <?php endif; ?>
+
+                    <?php if ($tmpHtml = $this->getChildHtml('block_header_top_right')): ?>
+                        <div class="item item-right"><?php echo $tmpHtml; ?></div>
+                    <?php endif; ?>
+
+                </div> <!-- end: right column -->
+
+            </div> <!-- end: inner-container -->
+        </div> <!-- end: header-top -->
+    </div> <!-- end: header-top-container -->
+
+    <div class="header-primary-container">
+        <div class="header-primary header container">
+            <div class="inner-container">
+
+                <?php echo $this->getChildHtml('topContainer'); ?>
+                <?php echo $this->getChildHtml('header-wrapper'); ?>
+
+                <?php
+                //Important: do not add any additional blocks directly inside the "hp-blocks-holder" div.
+                //Additional blocks, if needed, can be added inside columns (left, central, righ).
+                ?>
+                <div class="hp-blocks-holder<?php if($hpClasses) echo $hpClasses; ?>">
+
+                    <?php if (isset($grid['primLeftCol'])): ?>
+                        <!-- Left column -->
+                        <div class="hp-block left-column <?php echo $grid['primLeftCol']; ?>">
+                            <?php echo $this->getChildHtml('container_header_primary_left_1'); ?>
+                            <?php if (isset($html['primLeftCol'])): ?>
+                                <?php foreach ($html['primLeftCol'] as $element): ?>
+                                    <div class="item"><?php echo $element; ?></div>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                        </div> <!-- end: left column -->
+                    <?php endif; ?>
+
+                    <?php if (isset($grid['primCentralCol'])): ?>
+                        <!-- Central column -->
+                        <div class="hp-block central-column <?php echo $grid['primCentralCol']; ?>">
+                            <?php echo $this->getChildHtml('container_header_primary_central_1'); ?>
+                            <?php if (isset($html['primCentralCol'])): ?>
+                                <?php foreach ($html['primCentralCol'] as $element): ?>
+                                    <div class="item"><?php echo $element; ?></div>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                        </div> <!-- end: central column -->
+                    <?php endif; ?>
+
+                    <?php if (isset($grid['primRightCol'])): ?>
+                        <!-- Right column -->
+                        <div class="hp-block right-column <?php echo $grid['primRightCol']; ?>">
+                            <?php echo $this->getChildHtml('container_header_primary_right_1'); ?>
+                            <?php if (isset($html['primRightCol'])): ?>
+                                <?php foreach ($html['primRightCol'] as $element): ?>
+                                    <div class="item"><?php echo $element; ?></div>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                        </div> <!-- end: right column -->
+                    <?php endif; ?>
+                    
+                </div> <!-- end: hp-blocks-holder -->
+
+            </div> <!-- end: inner-container -->
+        </div> <!-- end: header-primary -->
+    </div> <!-- end: header-primary-container -->
+
+    <?php if ($menuDisplayedInFullWidthContainer): ?>
+        <?php echo $menuContainerHtml; ?>
+    <?php endif; ?>
+
+</div> <!-- end: header-container3 -->
+</div> <!-- end: header-container2 -->
+</div> <!-- end: header-container -->
+<script type="text/javascript">
+//<![CDATA[
+
+requirejs(['jquery', 'smartheader', 'stickyheader', 'dropdownDialog'], function(jQuery, smartheader, stickyheader, dropdownDialog) {
+
+    var theHeaderContainer = jQuery('#header-container');
+
+    <?php //Important: mobile header code must be executed before sticky header code ?>
+    <?php if ($mobileHeaderMode): ?>
+
+        //alert('header tpl, before smartheader');
+
+        theHeaderContainer.smartheader();
+
+    <?php endif; //end: mode  ?>
+
+    jQuery(function($) {
+
+        //console.log('header tpl, on(ready), ater smartheader');
+        //alert('header tpl, on(ready), ater smartheader');
+
+        <?php if ($mobileHeaderMode): ?>
+
+            // Skip Links
+            var skipContents = $('.skip-content');
+            var skipLinks = $('.skip-link');
+
+            skipLinks.on('click', function (event) {
+
+                // In case skip link is "a" tag
+                event.preventDefault();
+
+                var self = $(this);
+                var target = self.data('skiptarget');
+
+                // Get target element
+                var elem = $(target);
+
+                // Check if stub is open
+                var isSkipContentOpen = elem.hasClass('skip-active') ? 1 : 0;
+
+                // Hide all stubs
+                skipLinks.removeClass('skip-active');
+                skipContents.removeClass('skip-active');
+
+                // Toggle stubs
+                if (isSkipContentOpen) {
+                    self.removeClass('skip-active');
+                } else {
+                    self.addClass('skip-active');
+                    elem.addClass('skip-active');
+                }
+            });
+
+        <?php endif; //end: mode  ?>
+
+        <?php if ($sticky): ?>
+
+            var stickyHeaderSettings = {
+                stickyThreshold: <?php echo $mobileMenuThreshold; ?>
+            };
+            theHeaderContainer.stickyheader(stickyHeaderSettings);
+
+        <?php endif; //end: if sticky  ?>
+
+    }); //end: on document ready
+
+}); //end: requirejs
+
+//]]>
+</script>

@@ -1,0 +1,9 @@
+/app/etc/env.php
+/pub/media/catalog/product
+/larger-images
+/var/cache
+/var/page_cache
+/backups
+/var/log
+/var/.setup_cronjob_status
+/var/.update_cronjob_status

@@ -1,0 +1,550 @@
+<?php /** * Additional scripts * * santhosh edited this for checkbox filter on category pages */ ?> <?php $theme = $this->helper('Infortis\Base\Helper\Data'); $gc = $theme->getCfgGroup('category_grid'); ?> <script type="text/javascript">
+//<![CDATA[
+
+requirejs(['jquery', 'jquery/ui'], function(jQuery) {
+    
+    <?php  ?> <?php if ($gc['equal_height']): ?>
+        var currentpathurl = window.location.pathname;
+        if((currentpathurl.indexOf("mini")>0) || (currentpathurl.indexOf("unboxed")>0) || (currentpathurl.indexOf("tester")>0)){
+            jQuery("#mainmenu li:nth-child(2)").addClass("active");
+        }else if(currentpathurl.indexOf("candles")>0){
+            jQuery("#mainmenu li:nth-child(6)").addClass("active");
+        }else if((currentpathurl.indexOf("bags")>0) || (currentpathurl.indexOf("sunglasses")>0) || (currentpathurl.indexOf("watches")>0)){
+            jQuery("#mainmenu li:nth-child(8)").addClass("active");
+        }
+        var catid = window.location.href.split("cat=");
+        var arrnewcatid = newcatid="";
+        if(catid.length>1){
+            if(arrnewcatid = catid[1].split("&")){
+                newcatid = arrnewcatid[0];
+                if(newcatid==12) jQuery("#mainmenu li:nth-child(3)").addClass("active");
+                if(newcatid==18) jQuery("#mainmenu li:nth-child(4)").addClass("active");
+                if(newcatid==9) jQuery("#mainmenu li:nth-child(5)").addClass("active");
+                if(newcatid==3) jQuery("#mainmenu li:nth-child(8)").addClass("active");
+            }
+        }
+      
+
+        if((currentpathurl.indexOf("mini")>0) || (currentpathurl.indexOf("unboxed")>0) || (currentpathurl.indexOf("tester")>0)){
+            jQuery("#mainmenu li:nth-child(2)").addClass("active");
+        }
+
+        if(jQuery('ol.sy-multiple-layered-navigation-items li').length){
+            jQuery('ol.sy-multiple-layered-navigation-items li').click(function(){
+                var element =    jQuery(this).find('a');
+                element.css('background-image', 'url(/pub/static/frontend/Infortis/ultimo/en_US/SY_MultipleLayeredNavigation/img/checked.png)');
+            });
+            jQuery('ol.sy-multiple-layered-navigation-items li.active').click(function(){
+                var elementactive =    jQuery(this).find('a');
+                elementactive.css('background-image', 'url(/pub/static/frontend/Infortis/ultimo/en_US/SY_MultipleLayeredNavigation/img/unchecked.png)');
+            });
+            
+        }
+       
+        var gridItemsEqualHeightApplied = false;
+        function setGridItemsEqualHeight()
+        {
+            var bottomMinSpace = 20; 
+            var gridItemMaxHeight = 0;
+            var gridItemMaxPaddingBottom = 0;
+            var $listContainer = jQuery('.category-products-grid');
+            var $listItems = $listContainer.children('ol').children();
+            var centered = $listContainer.hasClass('centered');
+            var $row = jQuery();
+
+            $listItems.each(function() {
+
+                var $item = jQuery(this);
+                var $actionsBlock = $item.find('.actions');
+
+                
+                if ($item.css("clear") == "left")
+                {
+                    
+                    if ($row.length)
+                    {
+                        $row.css({
+                            "height": gridItemMaxHeight + "px", 
+                            "padding-bottom": gridItemMaxPaddingBottom + "px"
+                        });
+
+                        
+                        $row = jQuery();
+                        gridItemMaxHeight = 0;
+                        gridItemMaxPaddingBottom = 0;
+                    }
+                }
+                $row = $row.add($item);
+
+                $item.css("height", "auto"); <?php  ?> gridItemMaxHeight = Math.max(gridItemMaxHeight, $item.height());
+
+                
+                $actionsBlock.css("bottom", bottomMinSpace + "px");
+
+                
+                if (centered)
+                {
+                    var objectWidth = $actionsBlock.width();
+                    var availableWidth = $item.width();
+                    var space = availableWidth - objectWidth;
+                    var leftOffset = ~~(space / 2);
+                    $actionsBlock.css("padding-left", leftOffset + "px"); <?php  ?> }
+
+                
+                var currentPaddingBottom = bottomMinSpace + $actionsBlock.innerHeight();
+                gridItemMaxPaddingBottom = Math.max(gridItemMaxPaddingBottom, currentPaddingBottom);
+
+                $item.css("padding-bottom", currentPaddingBottom + "px"); 
+
+            });
+
+            
+            if ($row.length)
+            {
+                $row.css({
+                    "height": gridItemMaxHeight + "px", 
+                    "padding-bottom": gridItemMaxPaddingBottom + "px"
+                });
+            }
+            
+            gridItemsEqualHeightApplied = true;
+
+        }
+
+    <?php endif;  ?> jQuery(function($) {
+
+
+
+        
+        <?php if ($gc['equal_height']): ?>
+
+            $(document).on('last-swatch-found', function(e) {
+                setGridItemsEqualHeight();
+                $(document).off('last-swatch-found');
+                e.stopPropagation();
+            });
+
+            setGridItemsEqualHeight();
+            
+        <?php endif; ?> <?php  ?> <?php if ($gc['hover_effect']): ?>
+
+            var startHeight;
+            var startPaddingBottom;
+            $('.category-products-grid').on('mouseenter', '.item', function() {
+
+                    var $item = $(this);
+
+                <?php if ($gc['disable_hover_effect']):  ?>
+                    <?php  ?> if ($(window).width() >= <?php echo $gc['disable_hover_effect']; ?>)
+                    {
+                <?php endif; ?> <?php if ($gc['equal_height']): ?>
+                        if (gridItemsEqualHeightApplied === false)
+                        {
+                            return false;
+                        }
+                    <?php endif; ?> var bottomMinSpace = 20;
+                    var paddingBottom2 = 0;
+                    var $actionsBlock = $item.find('.actions');
+
+                    startHeight = $item.height();
+                    startPaddingBottom = parseInt($item.css("padding-bottom"));
+
+                    $item.css("height", "auto"); 
+                    $item.find(".display-onhover").fadeIn(400, "easeOutCubic"); 
+                    var h2 = $item.height();
+                    
+                    
+                    
+
+                    
+                    
+                    paddingBottom2 = bottomMinSpace + $actionsBlock.innerHeight();
+
+                    
+                    var paddingBottomDiff = paddingBottom2 - startPaddingBottom;
+
+                    
+                    if (paddingBottomDiff > 0)
+                    {
+                        $item.css("padding-bottom", paddingBottom2 + "px");
+                    }
+
+                    
+                    
+                    
+                    var diff = 0;
+                    if (h2 < startHeight)
+                    {
+                        $item.height(startHeight);
+                    }
+                    else
+                    {
+                        $item.height(h2);
+                        diff = h2 - startHeight;
+                        if (paddingBottomDiff > 0)
+                        {
+                            diff += paddingBottomDiff;
+                        }
+                    }
+                    
+                    
+                    
+                    
+                    if (diff > 0)
+                    {
+                        $item.css("margin-bottom", "-" + diff + "px");
+                    }
+
+                <?php if ($gc['disable_hover_effect']):  ?>
+                    } <?php  ?> <?php endif; ?> }).on('mouseleave', '.item', function() {
+
+                    var $item = $(this);
+
+                <?php if ($gc['disable_hover_effect']):  ?>
+                <?php  ?> if ($(window).width() >= <?php echo $gc['disable_hover_effect']; ?>)
+                    {
+                <?php endif; ?> $item.find(".display-onhover").stop(true).hide();
+                    $item.css("margin-bottom", "");
+
+                    <?php  ?> <?php if ($gc['equal_height']): ?>
+                        $item.height(startHeight);
+                        $item.css("padding-bottom", startPaddingBottom);
+                    <?php else: ?>
+                        $item.css("height", "");
+                        $item.css("padding-bottom", "");
+                    <?php endif; ?> <?php if ($gc['disable_hover_effect']):  ?>
+                    } <?php  ?> <?php endif; ?> });
+        
+        <?php else:  ?>
+        
+            <?php  ?> $('.category-products-grid').on('mouseenter', '.item', function() {
+                $(this).find(".display-onhover").fadeIn(400, "easeOutCubic");
+            }).on('mouseleave', '.item', function() {
+                $(this).find(".display-onhover").stop(true).hide();
+            });
+        
+        <?php endif; ?> <?php  ?> $('.items-grid, .products-list').on('mouseenter', '.product-item-img', function() {
+            $(this).find(".alt-img").fadeIn(400, "easeOutCubic");
+        }).on('mouseleave', '.product-item-img', function() {
+            $(this).find(".alt-img").stop(true).fadeOut(400, "easeOutCubic");
+        });
+
+        <?php  ?> $('.product-img-column').on('mouseleave', '.fotorama__stage__shaft', function() {
+          
+            $(".magnify-lens").addClass("magnify-hidden");
+            $("#preview").addClass("magnify-hidden");
+            
+        });
+
+        <?php  ?> $('.fade-on-hover').on('mouseenter', function() {
+            $(this).animate({opacity: 0.75}, 300, 'easeInOutCubic');
+        }).on('mouseleave', function() {
+            $(this).stop(true).animate({opacity: 1}, 300, 'easeInOutCubic');
+        });
+
+
+
+        
+        var ddBlockSelector = '.dropdown-block-trigger'; 
+        var ddOpenTimeout;
+        var dMenuPosTimeout;
+        var DD_DELAY_IN = 200;
+        var DD_DELAY_OUT = 0;
+        var DD_ANIMATION_IN = 0;
+        var DD_ANIMATION_OUT = 0;
+
+        $(document).on('mouseenter touchstart', ddBlockSelector, function(e) {
+
+            var dd = $(this);
+            var ddHeading = dd.children('.dropdown-heading');
+            var ddContent = dd.children('.dropdown-content');
+
+            
+            var isDdOpened = dd.data('ddOpened');
+            if (isDdOpened === false || isDdOpened === undefined)
+            {
+                
+                ddContent.css("left", "");
+                ddContent.css("right", "");
+
+                
+                clearTimeout(ddOpenTimeout);
+                ddOpenTimeout = setTimeout(function() {
+                    
+                    dd.addClass('open');
+
+                    
+                    dd.data('ddOpened', true);
+                    
+                }, DD_DELAY_IN);
+
+                ddContent.stop(true, true).delay(DD_DELAY_IN).fadeIn(DD_ANIMATION_IN, "easeOutCubic");
+                
+                
+                
+                clearTimeout(dMenuPosTimeout);
+                dMenuPosTimeout = setTimeout(function() {
+
+                    if (ddContent.offset().left < 0)
+                    {
+                        var space = dd.offset().left; 
+                        ddContent.css("left", (-1)*space);
+                        ddContent.css("right", "auto");
+                    }
+                
+                }, DD_DELAY_IN);
+
+            } 
+
+        }).on('mouseleave', ddBlockSelector, function(e) {
+
+            var dd = $(this);
+            var ddContent = dd.children('.dropdown-content');
+
+            clearTimeout(ddOpenTimeout); 
+            ddContent.stop(true, true).delay(DD_DELAY_OUT).fadeOut(DD_ANIMATION_OUT, "easeInCubic");
+            if (ddContent.is(":hidden"))
+            {
+                ddContent.hide();
+            }
+            dd.removeClass('open');
+
+            
+            dd.data('ddOpened', false);
+
+            
+            dd.data('ddClickIntercepted', false);
+
+        }).on('click', ddBlockSelector, function(e) {
+
+            var dd = $(this);
+            var ddHeading = dd.children('.dropdown-heading');
+            var ddContent = dd.children('.dropdown-content');
+
+            
+            if ($.contains(ddHeading[0], e.target) || ddHeading.is(e.target))
+            {
+                
+                if (dd.data('ddClickIntercepted'))
+                {
+                    if (dd.hasClass('open'))
+                    {
+                        clearTimeout(ddOpenTimeout); 
+                        ddContent.stop(true, true).delay(DD_DELAY_OUT).fadeOut(DD_ANIMATION_OUT, "easeInCubic");
+                        if (ddContent.is(":hidden"))
+                        {
+                            ddContent.hide();
+                        }
+                        dd.removeClass('open');
+
+                        
+                        dd.data('ddOpened', false);
+
+                        
+                        dd.data('ddClickIntercepted', false);
+                    }
+                }
+                else 
+                {
+                    
+                    dd.data('ddClickIntercepted', true);
+                }
+            }
+
+        });
+
+
+
+        <?php  ?> var windowScroll_t;
+        $(window).scroll(function(){
+            
+            clearTimeout(windowScroll_t);
+            windowScroll_t = setTimeout(function() {
+                                        
+                if ($(this).scrollTop() > 100)
+                {
+                    $('#scroll-to-top').fadeIn();
+                }
+                else
+                {
+                    $('#scroll-to-top').fadeOut();
+                }
+            
+            }, 500);
+            
+        });
+        
+        $('#scroll-to-top').click(function(){
+            $("html, body").animate({scrollTop: 0}, 600, "easeOutCubic");
+            return false;
+        });
+
+
+
+        <?php  ?> var dResize = {
+
+            winWidth : 0
+            , winHeight : 0
+            , windowResizeTimeout : null
+
+            , init : function()
+            {
+                dResize.winWidth = $(window).width();
+                dResize.winHeight = $(window).height();
+                dResize.windowResizeTimeout;
+
+                $(window).on('resize', function(e) {
+                    clearTimeout(dResize.windowResizeTimeout);
+                    dResize.windowResizeTimeout = setTimeout(function() {
+                        dResize.onEventResize(e);
+                    }, 50);
+                });
+            }
+
+            , onEventResize : function(e)
+            {
+                
+                var winNewWidth = $(window).width();
+                var winNewHeight = $(window).height();
+
+                
+                if (dResize.winWidth != winNewWidth || dResize.winHeight != winNewHeight)
+                {
+                    
+                    $(window).trigger("themeResize", e);
+
+                    
+                    dResize.onEventDeferredResize();
+                }
+
+                
+                dResize.winWidth = winNewWidth;
+                dResize.winHeight = winNewHeight;
+            }
+
+            , onEventDeferredResize : function() 
+            {
+
+                
+                <?php if ($gc['equal_height']): ?>
+
+                    setGridItemsEqualHeight();
+
+                <?php endif; ?> }
+
+        }; 
+
+        dResize.init();
+
+
+
+    }); 
+
+
+
+    jQuery(window).on('load',function() {
+
+        <?php  ?> <?php if ($gc['equal_height']): ?>
+
+            setGridItemsEqualHeight();
+
+        <?php endif; ?> }); 
+
+
+
+}); 
+
+
+
+requirejs(['jquery', 'enquire'], function(jQuery, enquire) {
+
+    jQuery(function($) {
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+        jQuery.fn.toggleSingle = function (options) {
+
+            
+            var settings = $.extend({
+                destruct: false
+            }, options);
+
+            return this.each(function () {
+                if (!settings.destruct) {
+                    $(this).on('click', function () {
+                        $(this)
+                            .next()
+                            .toggleClass('no-display')
+                            .parent()
+                            .toggleClass('active');
+                            
+                            
+                            
+                    });
+                    
+                    $this = $(this);
+                    if (!$this.parent().hasClass('active'))
+                    {
+                        $this.next().addClass('no-display');
+                    }
+                }
+                else
+                {
+                    
+                    $(this).off('click');
+                    
+                    $(this)
+                        .next()
+                        .removeClass('no-display')
+                        .parent()
+                        .removeClass('active');
+                }
+
+            });
+
+        } 
+
+        var breakpointScreenM = 768; 
+
+        
+        enquire.register('(max-width: ' + (breakpointScreenM - 1) + 'px)', {
+            setup: function () {
+                this.toggleElements = $(
+                    '.sidebar .block:not(#layered-filter-block) .block-title, ' +
+                    '.mobile-collapsible .block-title'
+                );
+            },
+            match: function () {
+                this.toggleElements.toggleSingle();
+            },
+            unmatch: function () {
+                this.toggleElements.toggleSingle({destruct: true});
+            }
+        });
+
+        
+        
+        $('.collapsible:not(.mobile-collapsible) .block-title').toggleSingle();
+
+    }); 
+
+}); 
+
+
+
+//]]>
+</script>

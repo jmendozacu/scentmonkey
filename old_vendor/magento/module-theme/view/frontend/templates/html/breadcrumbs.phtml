@@ -1,0 +1,129 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/* santhosh changed this */
+
+//echo '<pre>';
+//print_r($crumbs);
+
+$baseurl =  $this->getBaseUrl();
+
+if(isset($_SERVER['HTTPS'])){
+    $protocol = ($_SERVER['HTTPS'] && $_SERVER['HTTPS'] != "off") ? "https://" : "http://";
+}
+else{
+    $protocol = 'http://';
+}
+//echo $protocol.$_SERVER['SERVER_NAME'];
+if(!strstr($_SERVER['REQUEST_URI'],"catalogsearch") && ($_SERVER['REQUEST_URI'] != '/') && ($_SERVER['REQUEST_URI'] != '/new-arrivals')){
+
+    $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+    if($category = $objectManager->get('Magento\Framework\Registry')->registry('current_category')){
+        $cat_id =  $category->getId();
+
+        if(isset($_REQUEST['gender']) && $cat_id==17){
+
+            $crumbs['category17']['last']='';
+            $crumbs['category17']['link']='/retail.html';
+            $inserted['categoryGender'] = array(
+                'label' => 'Kids',
+                'link' => '',
+                'title' => '',
+                'first' => '',
+                'last' => '1',
+                'readonly' =>'', 
+            ); 
+            if($_REQUEST['gender']==4){
+                $inserted['categoryGender']['label'] = 'Kids';     
+            }else if($_REQUEST['gender']==5){
+                $inserted['categoryGender']['label'] = 'Men';
+            }else if($_REQUEST['gender']==6){
+                $inserted['categoryGender']['label'] = 'Unisex';
+            }else if($_REQUEST['gender']==7){
+                $inserted['categoryGender']['label'] = 'Women';
+            }
+            //array_push($crumbs, $inserted);
+            array_splice( $crumbs, 2, 0, $inserted ); 
+        }
+        if(($cat_id==15) || ($cat_id==21) || ($cat_id==22)){
+
+            $inserted['category17'] = array(
+                'label' => 'Fragrances',
+                'link' => '/retail.html',
+                'title' => '',
+                'first' => '',
+                'last' => '',
+                'readonly' =>'', 
+            ); 
+            
+            array_splice( $crumbs, 1, 0, $inserted ); 
+        }
+        if(($cat_id==24) || ($cat_id==20) || ($cat_id==6)){
+
+            $inserted['category17'] = array(
+                'label' => 'Accessories',
+                'link' => '/accessory.html',
+                'title' => '',
+                'first' => '',
+                'last' => '',
+                'readonly' =>'', 
+            ); 
+            
+            array_splice( $crumbs, 1, 0, $inserted ); 
+        }
+    }
+    
+}else{
+
+    if(isset($_REQUEST['cat'])){
+        $inserted['category12'] = array(
+            'label' => 'Haircare',
+            'link' => '/haircare.html',
+            'title' => '',
+            'first' => '',
+            'last' => '',
+            'readonly' =>'', 
+        ); 
+        if($_REQUEST['cat']==12){
+            array_splice( $crumbs, 1, 0, $inserted); 
+        }else if($_REQUEST['cat']==18){
+            $inserted['category12']['label']='Skincare';
+            $inserted['category12']['link']='/skincare.html';
+            array_splice( $crumbs, 1, 0, $inserted); 
+        }else if($_REQUEST['cat']==9){
+            $inserted['category12']['label']='Cosmetics';
+            $inserted['category12']['link']='/cosmetic.html';
+            array_splice( $crumbs, 1, 0, $inserted); 
+        }else if($_REQUEST['cat']==3){
+            $inserted['category12']['label']='Accessories';
+            $inserted['category12']['link']='/accessory.html';
+            array_splice( $crumbs, 1, 0, $inserted); 
+        }
+   
+    }
+}
+?>
+<?php if ($crumbs && is_array($crumbs)) : 
+
+    ?>
+<div class="breadcrumbs">
+    <ul class="items">
+        <?php foreach ($crumbs as $crumbName => $crumbInfo) : ?>
+            <li class="item <?= /* @escapeNotVerified */ $crumbName ?>">
+            <?php if ($crumbInfo['link']) : ?>
+                <a href="<?= /* @escapeNotVerified */ $crumbInfo['link'] ?>" title="<?= $block->escapeHtml($crumbInfo['title']) ?>"><?= $block->escapeHtml($crumbInfo['label']) ?></a>
+            <?php elseif ($crumbInfo['last']) : ?>
+                <strong><?= $block->escapeHtml($crumbInfo['label']) ?></strong>
+            <?php else: ?>
+                <?= $block->escapeHtml($crumbInfo['label']) ?>
+            <?php endif; ?>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+</div>
+<?php endif; ?>

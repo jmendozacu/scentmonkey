@@ -1,0 +1,1 @@
+"Fatal Error: 'Allowed memory size of 792723456 bytes exhausted (tried to allocate 4096 bytes)' in '\/var\/www\/vhosts\/scentmonkey.com\/httpdocs\/vendor\/magento\/framework\/DB\/Statement\/Pdo\/Mysql.php' on line 91"

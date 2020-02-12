@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2017 TechNWeb, Inc. All rights reserved.
+ * See TNW_LICENSE.txt for license details.
+ */
+-->
+<payment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Payment:etc/payment.xsd">
+    <methods>
+        <method name="tnw_authorizecim">
+            <allow_multiple_address>1</allow_multiple_address>
+        </method>
+        <!--<method name="tnw_authorizecim_vault">-->
+            <!--<allow_multiple_address>1</allow_multiple_address>-->
+        <!--</method>-->
+    </methods>
+</payment>

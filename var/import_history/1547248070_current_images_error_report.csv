@@ -1,0 +1,2 @@
+sku,base_image,base_image_label,small_image,small_image_label,thumbnail_image,thumbnail_image_label,errors
+I0042264,images/I0042264.jpg,I0042264,images/I0042264.jpg,I0042264,images/I0042264.jpg,I0042264,"Imported resource (image) could not be downloaded from external resource due to timeout or access permissions"
